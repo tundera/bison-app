@@ -48,8 +48,10 @@ export function SignupForm() {
   async function handleSignup(formData) {
     try {
       setIsLoading(true);
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
       const { email, password, ...profile } = formData;
-      const variables = { data: { email, password, profile: { create: profile } } };
+      const variables = { data: { email, password } };
+
       const { data } = await signup({ variables });
 
       await login(data.signup.token);

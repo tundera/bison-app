@@ -1,4 +1,6 @@
-// https://prettier.io/docs/en/options.html
+/**
+ * @type {import('prettier').Options}
+ */
 module.exports = {
   trailingComma: 'es5',
   bracketSpacing: true,
@@ -6,4 +8,5 @@ module.exports = {
   tabWidth: 2,
   singleQuote: true,
   arrowParens: 'always',
+  proseWrap: 'always',
 };

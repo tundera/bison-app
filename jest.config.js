@@ -1,11 +1,6 @@
-const testPathIgnorePatterns = [
-  '<rootDir>/node_modules',
-  'cypress',
-  'factories',
-  'helpers',
-  'tests/e2e',
-];
-
+/**
+ * @type {import('@jest/types').Config.InitialOptionsWithRootDir}
+ */
 module.exports = {
   preset: 'ts-jest',
   rootDir: 'tests',
@@ -13,7 +8,13 @@ module.exports = {
   // setupFilesAfterEnv: ['<rootDir>/tests/jest.setup.ts'],
   globalSetup: '<rootDir>/jest.setup.js',
   globalTeardown: '<rootDir>/jest.teardown.js',
-  testPathIgnorePatterns,
+  testPathIgnorePatterns: [
+    '<rootDir>/node_modules',
+    'cypress',
+    'factories',
+    'helpers',
+    'tests/e2e',
+  ],
   globals: {
     'ts-jest': {
       tsConfig: {
