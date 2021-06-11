@@ -73,6 +73,9 @@ export function render(ui: RenderUI, { router = {}, ...options }: RenderOptions 
 const mockRouter: NextRouter = {
   basePath: '',
   pathname: '/',
+  isReady: true,
+  isLocaleDomain: false,
+  isPreview: false,
   route: '/',
   asPath: '/',
   query: {},

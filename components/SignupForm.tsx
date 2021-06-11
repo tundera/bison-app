@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import NextLink from 'next/link';
 import {
   Link,
@@ -35,7 +35,7 @@ export const SIGNUP_MUTATION = gql`
 
 /** Form to sign up */
 export function SignupForm() {
-  const { register, handleSubmit, errors, setError } = useForm();
+  const { register, handleSubmit, formState, setError } = useForm();
   const [isLoading, setIsLoading] = useState(false);
   const [signup] = useSignupMutation();
   const { login } = useAuth();
@@ -48,9 +48,8 @@ export function SignupForm() {
   async function handleSignup(formData) {
     try {
       setIsLoading(true);
-      // eslint-disable-next-line @typescript-eslint/no-unused-vars
       const { email, password, ...profile } = formData;
-      const variables = { data: { email, password } };
+      const variables = { data: { email, password }, profile: { create: { profile } } };
 
       const { data } = await signup({ variables });
 
@@ -80,16 +79,16 @@ export function SignupForm() {
           <Input
             type="text"
             name="email"
-            ref={register({
+            isInvalid={formState.errors.email}
+            {...register('email', {
               required: 'email is required',
               pattern: {
                 value: EMAIL_REGEX,
                 message: 'invalid email',
               },
             })}
-            isInvalid={errors.email}
           />
-          <ErrorText>{errors.email && errors.email.message}</ErrorText>
+          <ErrorText>{formState.errors.email && formState.errors.email.message}</ErrorText>
         </FormControl>
 
         <FormControl id="password">
@@ -97,10 +96,10 @@ export function SignupForm() {
           <Input
             type="password"
             name="password"
-            ref={register({ required: 'password is required', minLength: 8 })}
-            isInvalid={errors.password}
+            isInvalid={formState.errors.password}
+            {...register('password', { required: 'password is required', minLength: 8 })}
           />
-          <ErrorText>{errors.password && errors.password.message}</ErrorText>
+          <ErrorText>{formState.errors.password && formState.errors.password.message}</ErrorText>
         </FormControl>
 
         <FormControl id="firstName">
@@ -108,10 +107,10 @@ export function SignupForm() {
           <Input
             type="text"
             name="firstName"
-            ref={register({ required: true })}
-            isInvalid={errors.firstName}
+            isInvalid={formState.errors.firstName}
+            {...register('firstName', { required: true })}
           />
-          <ErrorText>{errors.firstName && errors.firstName.message}</ErrorText>
+          <ErrorText>{formState.errors.firstName && formState.errors.firstName.message}</ErrorText>
         </FormControl>
 
         <FormControl id="lastName">
@@ -119,10 +118,10 @@ export function SignupForm() {
           <Input
             type="text"
             name="lastName"
-            ref={register({ required: true })}
-            isInvalid={errors.lastName}
+            isInvalid={formState.errors.lastName}
+            {...register('lastName', { required: true })}
           />
-          <ErrorText>{errors.lastName && errors.lastName.message}</ErrorText>
+          <ErrorText>{formState.errors.lastName && formState.errors.lastName.message}</ErrorText>
         </FormControl>
       </Stack>
 

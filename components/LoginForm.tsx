@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { useRouter } from 'next/router';
 import NextLink from 'next/link';
 import {
@@ -31,7 +31,7 @@ export const LOGIN_MUTATION = gql`
 
 /** Form to Login */
 export function LoginForm() {
-  const { register, handleSubmit, errors, setError } = useForm();
+  const { register, handleSubmit, formState, setError } = useForm();
   const [isLoading, setIsLoading] = useState(false);
   const [login] = useLoginMutation();
   const { login: loginUser } = useAuth();
@@ -69,16 +69,16 @@ export function LoginForm() {
           <Input
             type="text"
             name="email"
-            ref={register({
+            isInvalid={formState.errors.email}
+            {...register('email', {
               required: 'email is required',
               pattern: {
                 value: EMAIL_REGEX,
                 message: 'invalid email',
               },
             })}
-            isInvalid={errors.email}
           />
-          <ErrorText>{errors.email && errors.email.message}</ErrorText>
+          <ErrorText>{formState.errors.email && formState.errors.email.message}</ErrorText>
         </FormControl>
 
         <FormControl id="password">
@@ -86,10 +86,10 @@ export function LoginForm() {
           <Input
             type="password"
             name="password"
-            ref={register({ required: 'password is required' })}
-            isInvalid={errors.password}
+            isInvalid={formState.errors.password}
+            {...register('password', { required: 'password is required' })}
           />
-          <ErrorText>{errors.password && errors.password.message}</ErrorText>
+          <ErrorText>{formState.errors.password && formState.errors.password.message}</ErrorText>
         </FormControl>
       </Stack>
 

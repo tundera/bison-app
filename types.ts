@@ -1,10 +1,10 @@
-import gql from 'graphql-tag';
-import * as ApolloReactCommon from '@apollo/client';
-import * as ApolloReactHooks from '@apollo/client';
+import { gql } from '@apollo/client';
+import * as Apollo from '@apollo/client';
 export type Maybe<T> = T | null;
 export type Exact<T extends { [key: string]: unknown }> = { [K in keyof T]: T[K] };
 export type MakeOptional<T, K extends keyof T> = Omit<T, K> & { [SubKey in K]?: Maybe<T[SubKey]> };
 export type MakeMaybe<T, K extends keyof T> = Omit<T, K> & { [SubKey in K]: Maybe<T[SubKey]> };
+const defaultOptions = {};
 /** All built-in and custom scalars, mapped to their actual values */
 export type Scalars = {
   ID: string;
@@ -164,10 +164,7 @@ export const LoginDocument = gql`
     }
   }
 `;
-export type LoginMutationFn = ApolloReactCommon.MutationFunction<
-  LoginMutation,
-  LoginMutationVariables
->;
+export type LoginMutationFn = Apollo.MutationFunction<LoginMutation, LoginMutationVariables>;
 
 /**
  * __useLoginMutation__
@@ -188,17 +185,15 @@ export type LoginMutationFn = ApolloReactCommon.MutationFunction<
  * });
  */
 export function useLoginMutation(
-  baseOptions?: ApolloReactHooks.MutationHookOptions<LoginMutation, LoginMutationVariables>
+  baseOptions?: Apollo.MutationHookOptions<LoginMutation, LoginMutationVariables>
 ) {
-  return ApolloReactHooks.useMutation<LoginMutation, LoginMutationVariables>(
-    LoginDocument,
-    baseOptions
-  );
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useMutation<LoginMutation, LoginMutationVariables>(LoginDocument, options);
 }
 
 export type LoginMutationHookResult = ReturnType<typeof useLoginMutation>;
-export type LoginMutationResult = ApolloReactCommon.MutationResult<LoginMutation>;
-export type LoginMutationOptions = ApolloReactCommon.BaseMutationOptions<
+export type LoginMutationResult = Apollo.MutationResult<LoginMutation>;
+export type LoginMutationOptions = Apollo.BaseMutationOptions<
   LoginMutation,
   LoginMutationVariables
 >;
@@ -212,10 +207,7 @@ export const SignupDocument = gql`
     }
   }
 `;
-export type SignupMutationFn = ApolloReactCommon.MutationFunction<
-  SignupMutation,
-  SignupMutationVariables
->;
+export type SignupMutationFn = Apollo.MutationFunction<SignupMutation, SignupMutationVariables>;
 
 /**
  * __useSignupMutation__
@@ -235,17 +227,15 @@ export type SignupMutationFn = ApolloReactCommon.MutationFunction<
  * });
  */
 export function useSignupMutation(
-  baseOptions?: ApolloReactHooks.MutationHookOptions<SignupMutation, SignupMutationVariables>
+  baseOptions?: Apollo.MutationHookOptions<SignupMutation, SignupMutationVariables>
 ) {
-  return ApolloReactHooks.useMutation<SignupMutation, SignupMutationVariables>(
-    SignupDocument,
-    baseOptions
-  );
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useMutation<SignupMutation, SignupMutationVariables>(SignupDocument, options);
 }
 
 export type SignupMutationHookResult = ReturnType<typeof useSignupMutation>;
-export type SignupMutationResult = ApolloReactCommon.MutationResult<SignupMutation>;
-export type SignupMutationOptions = ApolloReactCommon.BaseMutationOptions<
+export type SignupMutationResult = Apollo.MutationResult<SignupMutation>;
+export type SignupMutationOptions = Apollo.BaseMutationOptions<
   SignupMutation,
   SignupMutationVariables
 >;
@@ -273,18 +263,18 @@ export const MeDocument = gql`
  *   },
  * });
  */
-export function useMeQuery(
-  baseOptions?: ApolloReactHooks.QueryHookOptions<MeQuery, MeQueryVariables>
-) {
-  return ApolloReactHooks.useQuery<MeQuery, MeQueryVariables>(MeDocument, baseOptions);
+export function useMeQuery(baseOptions?: Apollo.QueryHookOptions<MeQuery, MeQueryVariables>) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useQuery<MeQuery, MeQueryVariables>(MeDocument, options);
 }
 
 export function useMeLazyQuery(
-  baseOptions?: ApolloReactHooks.LazyQueryHookOptions<MeQuery, MeQueryVariables>
+  baseOptions?: Apollo.LazyQueryHookOptions<MeQuery, MeQueryVariables>
 ) {
-  return ApolloReactHooks.useLazyQuery<MeQuery, MeQueryVariables>(MeDocument, baseOptions);
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useLazyQuery<MeQuery, MeQueryVariables>(MeDocument, options);
 }
 
 export type MeQueryHookResult = ReturnType<typeof useMeQuery>;
 export type MeLazyQueryHookResult = ReturnType<typeof useMeLazyQuery>;
-export type MeQueryResult = ApolloReactCommon.QueryResult<MeQuery, MeQueryVariables>;
+export type MeQueryResult = Apollo.QueryResult<MeQuery, MeQueryVariables>;

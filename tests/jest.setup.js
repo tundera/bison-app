@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-var-requires */
 const util = require('util');
 const childProcess = require('child_process');
 
@@ -26,5 +27,5 @@ module.exports = async () => {
   global.process.env.DATABASE_URL = global.databaseUrl;
 
   // Run the migrations to ensure our schema has the required structure
-  await exec(`yarn prisma migrate up --create-db --experimental`);
+  await exec(`yarn prisma migrate dev`);
 };

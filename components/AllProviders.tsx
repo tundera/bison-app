@@ -1,4 +1,3 @@
-import React from 'react';
 import { ChakraProvider, CSSReset } from '@chakra-ui/react';
 import { ApolloProvider } from '@apollo/client';
 

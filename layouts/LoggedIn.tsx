@@ -1,4 +1,3 @@
-import React from 'react';
 import { useRouter } from 'next/router';
 import { Box, Center, Flex, Text, Button } from '@chakra-ui/react';
 

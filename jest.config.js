@@ -4,7 +4,7 @@
 module.exports = {
   preset: 'ts-jest',
   rootDir: 'tests',
-  // testEnvironment: join(__dirname, 'tests', 'nexus-test-environment.js'),
+  testEnvironment: 'jsdom',
   // setupFilesAfterEnv: ['<rootDir>/tests/jest.setup.ts'],
   globalSetup: '<rootDir>/jest.setup.js',
   globalTeardown: '<rootDir>/jest.teardown.js',
@@ -17,8 +17,8 @@ module.exports = {
   ],
   globals: {
     'ts-jest': {
-      tsConfig: {
-        jsx: 'react',
+      tsconfig: {
+        jsx: 'react-jsx',
       },
     },
   },
