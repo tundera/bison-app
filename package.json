@@ -48,7 +48,7 @@
     "@chakra-ui/theme": "1.9.0",
     "@emotion/react": "^11.4.0",
     "@emotion/styled": "^11.3.0",
-    "@prisma/client": "^2.22.1",
+    "@prisma/client": "^2.24.1",
     "@sendgrid/mail": "^7.4.4",
     "apollo-server-micro": "^2.18.1",
     "bcryptjs": "^2.4.3",
@@ -61,9 +61,11 @@
     "next": "10.2.3",
     "next-compose-plugins": "^2.2.1",
     "nexus": "^1.0.0",
+    "nexus-prisma": "^0.28.0",
     "react": "17.0.2",
     "react-dom": "17.0.2",
     "react-hook-form": "^7.8.3",
+    "react-query": "^3.16.1",
     "universal-cookie": "^4.0.3"
   },
   "devDependencies": {

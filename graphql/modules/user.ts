@@ -1,3 +1,4 @@
+import { User } from 'nexus-prisma';
 import { objectType, extendType, inputObjectType, stringArg, arg, nonNull, enumType } from 'nexus';
 import { Role } from '@prisma/client';
 import { UserInputError } from 'apollo-server-micro';
@@ -6,9 +7,10 @@ import { hashPassword, appJwtForUser, comparePasswords } from '../../services/au
 import { canAccess } from '../../services/permissions';
 
 // User Type
-export const User = objectType({
-  name: 'User',
-  description: 'A User',
+export const UserObject = objectType({
+  name: User.$name,
+  description: User.$description,
+
   definition(t) {
     t.nonNull.id('id');
     t.nonNull.date('createdAt');

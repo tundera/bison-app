@@ -1,9 +1,11 @@
+import { Profile } from 'nexus-prisma';
 import { objectType } from 'nexus';
 
 // Profile Type
-export const Profile = objectType({
-  name: 'Profile',
-  description: 'A User Profile',
+export const ProfileObject = objectType({
+  name: Profile.$name,
+  description: Profile.$description,
+
   definition(t) {
     t.nonNull.id('id');
     t.nonNull.date('createdAt');

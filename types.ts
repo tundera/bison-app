@@ -50,7 +50,7 @@ export type MutationSignupArgs = {
   data: SignupInput;
 };
 
-/** A User Profile */
+/** User profile */
 export type Profile = {
   __typename?: 'Profile';
   createdAt: Scalars['DateTime'];
@@ -100,7 +100,7 @@ export type StringFilter = {
   startsWith?: Maybe<Scalars['String']>;
 };
 
-/** A User */
+/** A user */
 export type User = {
   __typename?: 'User';
   createdAt: Scalars['DateTime'];

@@ -1,3 +1,4 @@
+import type { AppProps } from 'next/app';
 import dynamic from 'next/dynamic';
 
 import { AllProviders } from '../components/AllProviders';
@@ -28,9 +29,11 @@ function AppWithAuth({ children }) {
   );
 }
 
-function App({ pageProps, Component }) {
+function App({ pageProps, Component }: AppProps) {
+  const { dehydratedState } = pageProps;
+
   return (
-    <AllProviders>
+    <AllProviders state={dehydratedState}>
       <AppWithAuth>
         <Component {...pageProps} />
       </AppWithAuth>

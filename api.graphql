@@ -50,7 +50,7 @@ A field whose value conforms to the standard E.164 format as specified in: https
 scalar PhoneNumber
 
 """
-A User Profile
+User profile
 """
 type Profile {
   createdAt: DateTime!
@@ -116,7 +116,7 @@ A field whose value conforms to the standard URL format as specified in RFC3986:
 scalar URL
 
 """
-A User
+A user
 """
 type User {
   createdAt: DateTime!
